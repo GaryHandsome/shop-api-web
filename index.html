@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天狗商城-首页</title>
+
+    <!-- 第一：导入Vant相关的CSS、JS -->
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="https://unpkg.com/vant@2.12/lib/index.css"/>
+
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://unpkg.com/vue@2.6/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vant@2.12/lib/vant.min.js"></script>
+</head>
+<body>
+    <!-- 第二：定义一个Vue根据节点 -->
+    <div id="app">
+        <van-button type="primary" @click="aa">主要按钮</van-button>
+        <van-button type="info">信息按钮</van-button>
+        <van-button type="default">默认按钮</van-button>
+        <van-button type="warning">警告按钮</van-button>
+        <van-button type="danger">危险按钮</van-button>
+    </div>
+
+    <!-- 第三：创建 Vue 实例-->
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+                aa() {
+                    this.$toast('好好学习，天天向上');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
