@@ -1,0 +1,39 @@
+html {
+    box-sizing: border-box;
+    font-size:14px ;
+}
+
+
+body {
+    background: #FFF;
+    font-family: -apple-system,Helvetica,sans-serif;
+    line-height: 1.5;
+    color: #666;
+    /* padding: ; */
+}
+
+.menu_title {   
+    width: 120%;
+    text-align: center;
+    font-size: .7rem ;
+    margin-top: .2rem;
+}
+
+.miao_sha {
+    width: 96%;
+    margin: auto;
+}
+
+.miao_sha_header {
+    color: #000;
+    margin-left: .5rem;
+    font-size: .8rem;
+    height: 2rem;
+    line-height: 2rem;
+}
+
+.miao_sha_price {
+    margin-top: .1rem;
+    font-size: .5rem;
+}
+

@@ -9,6 +9,7 @@
     <!-- 第一：导入Vant相关的CSS、JS -->
     <!-- 引入样式文件 -->
     <link rel="stylesheet" href="https://unpkg.com/vant@2.12/lib/index.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
 
     <!-- 引入 Vue 和 Vant 的 JS 文件 -->
     <script src="https://unpkg.com/vue@2.6/dist/vue.min.js"></script>
@@ -22,8 +23,8 @@
         <van-nav-bar
             title="天狗商城"
             right-text="登录"
-            @click-right="onClickRight"
-        ></van-nav-bar>
+            @click-right="onClickRight">
+        </van-nav-bar>
         <!-- 顶部导航结束 -->
 
         <!-- 搜索框开始 -->
@@ -31,8 +32,8 @@
             v-model="productName"
             shape="round"
             background="#aa0000"
-            placeholder="请输入搜索商品名称"
-        ></van-search>
+            placeholder="请输入搜索商品名称">
+        </van-search>
         <!-- 搜索框结束 -->
 
 
@@ -48,54 +49,51 @@
 
 
         <!-- 分类导航开始 -->
-        <van-grid :column-num="5">
+        <van-grid :column-num="5" class="menu" square>
             <van-grid-item v-for="(obj,index) in menuList" :key="index">
-                <van-image :src="obj.image"></van-image>
-                <span>{{ obj.text }}</span>
+                <van-image :src="obj.image" width="40"></van-image>
+                <span class="menu_title">{{ obj.text }}</span>
             </van-grid-item>
         </van-grid>
         <!-- 分类导航结束 -->
 
+        <!-- 秒杀商品开始 -->
+        <van-row class="miao_sha">
+            <van-col span="24">
+                <div class="miao_sha_header">
+                    天狗秒杀
+                </div>
+
+                <div class="miao_sha_content">
+                    <van-grid :column-num="6">
+                        <van-grid-item v-for="(obj,index) in miaoShaList" :key="index">
+                            <van-image :src="obj.image" width="20"></van-image>
+                            <span class="miao_sha_price">￥ {{ obj.price }}</span>
+                        </van-grid-item>
+                    </van-grid>
+                </div>
+            </van-col>
+        </van-row>
+        <!-- 秒杀商品结束 -->
+
+
+        <!-- 商品列表开始 -->
+        <!-- 商品列表结束 -->
+
+
+        <!-- 底部菜单开始 -->
+        <van-tabbar v-model="active">
+            <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+            <van-tabbar-item icon="cart-o">分类</van-tabbar-item>
+            <van-tabbar-item icon="apps-o" badge="43">购物车</van-tabbar-item>
+            <van-tabbar-item icon="friends-o" dot url="login.html">未登录</van-tabbar-item>
+        </van-tabbar>
+        <!-- 底部菜单结束 -->
         
     </div>
 
 
-
     <!-- 第三：创建 Vue 实例-->
-    <script>
-        let app = new Vue({
-            el:'#app',
-            data:{
-                // 搜索条件
-                productName:'',
-                // 轮播信息
-                swipeList:[
-                    {image:'images/1.jpg',text:'你好'},
-                    {image:'images/2.jpg',text:'我好'},
-                    {image:'images/3.jpg',text:'大家好'},
-                    {image:'images/4.jpg',text:'好好学习'},
-                    {image:'images/5.jpg',text:'天天向上'}
-                ],
-                // 导航菜单列表定义
-                menuList:[
-                    {image:'images/nav01.png',text:'京东超市'},
-                    {image:'images/nav02.png',text:'数码电器'},
-                    {image:'images/nav03.png',text:'京东新百贷'},
-                    {image:'images/nav04.png',text:'京东生鲜'},
-                    {image:'images/nav05.png',text:'京东到家'},
-                    {image:'images/nav06.png',text:'充值缴费'},
-                    {image:'images/nav07.png',text:'附近好店'},
-                    {image:'images/nav08.png',text:'PLUS会员'},
-                    {image:'images/nav09.png',text:'京东国际'},
-                    {image:'images/nav10.png',text:'京东拍卖'}
-                ]
-            },
-            methods:{
-                onClickRight() {
-                   location.href = "login.html"
-                }
-            }
-        });
-    </script>
+    <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
