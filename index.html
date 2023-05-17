@@ -17,12 +17,21 @@
 <body>
     <!-- 第二：定义一个Vue根节点 -->
     <div id="app">
+        <!-- 第四：使用 Vant 组件 -->
         <van-button type="primary" @click="aa">主要按钮</van-button>
         <van-button type="info">信息按钮</van-button>
         <van-button type="default">默认按钮</van-button>
         <van-button type="warning">警告按钮</van-button>
         <van-button type="danger">危险按钮</van-button>
+
+        <hr/>
+        <van-cell-group>
+            <van-cell title="单元格" value="内容"></van-cell>
+            <van-cell title="单元格" value="内容"></van-cell>
+        </van-cell-group>
     </div>
+
+
 
     <!-- 第三：创建 Vue 实例-->
     <script>
