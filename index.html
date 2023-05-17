@@ -49,7 +49,7 @@
 
 
         <!-- 分类导航开始 -->
-        <van-grid :column-num="5" class="menu" square>
+        <van-grid :column-num="5" class="menu" square center>
             <van-grid-item v-for="(obj,index) in menuList" :key="index">
                 <van-image :src="obj.image" width="40"></van-image>
                 <span class="menu_title">{{ obj.text }}</span>
@@ -65,10 +65,10 @@
                 </div>
 
                 <div class="miao_sha_content">
-                    <van-grid :column-num="6">
+                    <van-grid :column-num="6" square center>
                         <van-grid-item v-for="(obj,index) in miaoShaList" :key="index">
                             <van-image :src="obj.image" width="20"></van-image>
-                            <span class="miao_sha_price">￥ {{ obj.price }}</span>
+                            <span class="miao_sha_price">￥{{ obj.price }}</span>
                         </van-grid-item>
                     </van-grid>
                 </div>

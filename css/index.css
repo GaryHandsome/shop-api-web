@@ -5,7 +5,7 @@ html {
 
 
 body {
-    background: #FFF;
+    background: #f6f6f6;
     font-family: -apple-system,Helvetica,sans-serif;
     line-height: 1.5;
     color: #666;
@@ -25,15 +25,19 @@ body {
 }
 
 .miao_sha_header {
+    background: #FFF;
     color: #000;
-    margin-left: .5rem;
+    margin-top: .4rem;
+    padding-left: .5rem;
     font-size: .8rem;
     height: 2rem;
     line-height: 2rem;
 }
 
 .miao_sha_price {
-    margin-top: .1rem;
-    font-size: .5rem;
+    margin-top: .2rem;
+    font-size: .1rem;
+    color: red;
+    font-weight: bold;
 }
 
