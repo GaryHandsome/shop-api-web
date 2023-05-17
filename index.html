@@ -17,18 +17,46 @@
 <body>
     <!-- 第二：定义一个Vue根节点 -->
     <div id="app">
-        <!-- 第四：使用 Vant 组件 -->
-        <van-button type="primary" @click="aa">主要按钮</van-button>
-        <van-button type="info">信息按钮</van-button>
-        <van-button type="default">默认按钮</van-button>
-        <van-button type="warning">警告按钮</van-button>
-        <van-button type="danger">危险按钮</van-button>
 
-        <hr/>
-        <van-cell-group>
-            <van-cell title="单元格" value="内容"></van-cell>
-            <van-cell title="单元格" value="内容"></van-cell>
-        </van-cell-group>
+        <!-- 顶部导航开始 -->
+        <van-nav-bar
+            title="天狗商城"
+            right-text="登录"
+            @click-right="onClickRight"
+        ></van-nav-bar>
+        <!-- 顶部导航结束 -->
+
+        <!-- 搜索框开始 -->
+        <van-search
+            v-model="productName"
+            shape="round"
+            background="#aa0000"
+            placeholder="请输入搜索商品名称"
+        ></van-search>
+        <!-- 搜索框结束 -->
+
+
+        <!-- 轮播图片开始 -->
+        <van-swipe :autoplay="30000" indicator-color="red">
+            
+            <van-swipe-item v-for="(obj,index) in swipeList" :key="index">
+                <van-image :src="obj.image" :alt="obj.text"></van-image>
+            </van-swipe-item>
+
+        </van-swipe>
+        <!-- 轮播图片结束 -->
+
+
+        <!-- 分类导航开始 -->
+        <van-grid :column-num="5">
+            <van-grid-item v-for="(obj,index) in menuList" :key="index">
+                <van-image :src="obj.image"></van-image>
+                <span>{{ obj.text }}</span>
+            </van-grid-item>
+        </van-grid>
+        <!-- 分类导航结束 -->
+
+        
     </div>
 
 
@@ -38,11 +66,33 @@
         let app = new Vue({
             el:'#app',
             data:{
-
+                // 搜索条件
+                productName:'',
+                // 轮播信息
+                swipeList:[
+                    {image:'images/1.jpg',text:'你好'},
+                    {image:'images/2.jpg',text:'我好'},
+                    {image:'images/3.jpg',text:'大家好'},
+                    {image:'images/4.jpg',text:'好好学习'},
+                    {image:'images/5.jpg',text:'天天向上'}
+                ],
+                // 导航菜单列表定义
+                menuList:[
+                    {image:'images/nav01.png',text:'京东超市'},
+                    {image:'images/nav02.png',text:'数码电器'},
+                    {image:'images/nav03.png',text:'京东新百贷'},
+                    {image:'images/nav04.png',text:'京东生鲜'},
+                    {image:'images/nav05.png',text:'京东到家'},
+                    {image:'images/nav06.png',text:'充值缴费'},
+                    {image:'images/nav07.png',text:'附近好店'},
+                    {image:'images/nav08.png',text:'PLUS会员'},
+                    {image:'images/nav09.png',text:'京东国际'},
+                    {image:'images/nav10.png',text:'京东拍卖'}
+                ]
             },
             methods:{
-                aa() {
-                    this.$toast('好好学习，天天向上');
+                onClickRight() {
+                   location.href = "login.html"
                 }
             }
         });

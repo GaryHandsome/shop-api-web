@@ -5,8 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>天狗商城-登录</title>
+
+     <!-- 第一：导入Vant相关的CSS、JS -->
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="https://unpkg.com/vant@2.12/lib/index.css"/>
+
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://unpkg.com/vue@2.6/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vant@2.12/lib/vant.min.js"></script>
 </head>
 <body>
-    <h1>登录...</h1>
+    <div id="app">
+        <van-nav-bar
+            title="天狗注册/登录"
+            left-arrow
+            @click-left="onClickLeft"
+        ></van-nav-bar>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:'#app',
+
+            data:{
+
+            },
+
+            methods:{
+                onClickLeft() {
+                    location.href="index.html" ;
+                }
+            }
+        }) ;
+    </script>
 </body>
 </html>
