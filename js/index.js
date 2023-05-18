@@ -34,11 +34,25 @@ let app = new Vue({
             {image:'images/m06.jpg',price:600}
         ],
         // 设置底部菜单默认项
-        active:0
+        active:0,
+        // 商品列表信息
+        productList:[
+            {image:'images/product/101.png',name:'11111',price:49.9},
+            {image:'images/product/102.png',name:'22222',price:55.9},
+            {image:'images/product/103.png',name:'33333',price:66.9},
+            {image:'images/product/104.png',name:'44444',price:77.9},
+            {image:'images/product/105.png',name:'55555',price:88.9}
+        ]
     },
     methods:{
+        // 顶部标题右侧登录操作
         onClickRight() {
             location.href = "login.html"
+        },
+        // 搜索商品
+        onSearch() {
+            console.log("搜索...",this.productName);
+            // ajax
         }
     }
 });
