@@ -37,11 +37,7 @@ let app = new Vue({
         active:0,
         // 商品列表信息
         productList:[
-            {image:'images/product/101.png',name:'11111',price:49.9},
-            {image:'images/product/102.png',name:'22222',price:55.9},
-            {image:'images/product/103.png',name:'33333',price:66.9},
-            {image:'images/product/104.png',name:'44444',price:77.9},
-            {image:'images/product/105.png',name:'55555',price:88.9}
+            
         ]
     },
     methods:{
@@ -54,5 +50,18 @@ let app = new Vue({
             console.log("搜索...",this.productName);
             // ajax
         }
+    },
+    mounted(){
+        let that = this ;
+        $.ajax({
+            url: 'http://localhost:8088/api/product/list_product',
+            type: 'get',
+            success: function (res) {
+                console.log(res);
+                if(res.code==200) {
+                    that.productList = res.data ;
+                }
+            }
+        });
     }
 });

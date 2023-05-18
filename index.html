@@ -14,6 +14,7 @@
     <!-- 引入 Vue 和 Vant 的 JS 文件 -->
     <script src="vant/vue.min.js"></script>
     <script src="vant/vant.min.js"></script>
+    <script src="js/jquery-1.12.4.js"></script>
 </head>
 <body>
     <!-- 第二：定义一个Vue根节点 -->
@@ -85,11 +86,11 @@
                 <van-grid :column-num="2">
 
                     <van-grid-item v-for="(obj,index) in productList" :key="index">
-                        <van-image :src="obj.image"></van-image>
-                        <div class="product_name">{{ obj.name }}</div>
+                        <van-image :src="obj.productImage"></van-image>
+                        <div class="product_name">{{ obj.productName }}</div>
                         <div class="product_price">
                             <span class="currency">￥</span>
-                            <span class="price">{{ obj.price }}</span>
+                            <span class="price">{{ obj.productPrice }}</span>
                         </div>
 
                     </van-grid-item>
