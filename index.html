@@ -86,7 +86,7 @@
                 <van-grid :column-num="2">
 
                     <van-grid-item v-for="(obj,index) in productList" :key="index">
-                        <van-image :src="obj.productImage"></van-image>
+                        <van-image :src="'http://localhost:8080/images/product/' + obj.productImage"></van-image>
                         <div class="product_name">{{ obj.productName }}</div>
                         <div class="product_price">
                             <span class="currency">￥</span>

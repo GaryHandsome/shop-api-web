@@ -54,6 +54,8 @@ let app = new Vue({
     mounted(){
         let that = this ;
         $.ajax({
+            // 请求地址：api/product/list_product -- 当前前端工程的服务器/api/product/list_product -- 404
+            // http://127.0.0.1:5501/api/product/list_product - 404
             url: 'http://localhost:8088/api/product/list_product',
             type: 'get',
             success: function (res) {
