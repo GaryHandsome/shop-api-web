@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天狗商城-首页</title>
+
+    <!-- 第一：导入Vant相关的CSS、JS -->
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="../vant/index.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="../vant/vue.min.js"></script>
+    <script src="../vant/vant.min.js"></script>
+    <script src="../js/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <!-- 第二：定义一个Vue根节点 -->
+    <div id="app">
+        <van-sticky>
+            <!-- 顶部导航开始 -->
+            <van-nav-bar
+                title="天狗商城"
+                right-text="登录"
+                @click-right="onClickRight">
+            </van-nav-bar>
+            <!-- 顶部导航结束 -->
+
+            <!-- 搜索框开始 -->
+            <van-search
+                v-model="productName"
+                shape="round"
+                background="#aa0000"
+                placeholder="请输入搜索商品名称"
+                @search="onSearch">
+            </van-search>
+            <!-- 搜索框结束 -->
+       </van-sticky>
+
+
+        <!-- 轮播图片开始 -->
+        <van-swipe :autoplay="30000" indicator-color="red">
+            
+            <van-swipe-item v-for="(obj,index) in swipeList" :key="index">
+                <van-image :src="obj.image" :alt="obj.text"></van-image>
+            </van-swipe-item>
+
+        </van-swipe>
+        <!-- 轮播图片结束 -->
+
+
+        <!-- 分类导航开始 -->
+        <van-grid :column-num="5" class="menu" square center>
+            <van-grid-item v-for="(obj,index) in menuList" :key="index">
+                <van-image :src="obj.image" width="40"></van-image>
+                <span class="menu_title">{{ obj.text }}</span>
+            </van-grid-item>
+        </van-grid>
+        <!-- 分类导航结束 -->
+
+        <!-- 秒杀商品开始 -->
+        <van-row class="container">
+            <van-col span="24">
+                <div class="miao_sha_header">
+                    天狗秒杀
+                </div>
+
+                <div class="miao_sha_content">
+                    <van-grid :column-num="6" square center>
+                        <van-grid-item v-for="(obj,index) in miaoShaList" :key="index">
+                            <van-image :src="obj.image" width="20"></van-image>
+                            <span class="miao_sha_price">￥{{ obj.price }}</span>
+                        </van-grid-item>
+                    </van-grid>
+                </div>
+            </van-col>
+        </van-row>
+        <!-- 秒杀商品结束 -->
+
+
+        <!-- 商品列表开始 -->
+        <van-row class="container product_list">
+            <van-col span="24">
+                <van-grid :column-num="2">
+
+                    <van-grid-item v-for="(obj,index) in productList" :key="index">
+                        <van-image :src="obj.image"></van-image>
+                        <div class="product_name">{{ obj.name }}</div>
+                        <van-image :src="obj.productImage"></van-image>
+                        <div class="product_name">{{ obj.productName }}</div>
+                        <div class="product_price">
+                            <span class="currency">￥</span>
+                            <span class="price">{{ obj.price }}</span>
+                            <span class="price">{{ obj.productPrice }}</span>
+                        </div>
+
+                    </van-grid-item>
+
+                  </van-grid>
+            </van-col>
+        </van-row>
+
+        <!-- 商品列表结束 -->
+
+
+        <!-- 底部菜单开始 -->
+        <van-tabbar v-model="active">
+            <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+            <van-tabbar-item icon="apps-o">分类</van-tabbar-item>
+            <van-tabbar-item icon="cart-o" badge="43">购物车</van-tabbar-item>
+            <van-tabbar-item icon="friends-o" dot url="login.html">未登录</van-tabbar-item>
+        </van-tabbar>
+        <!-- 底部菜单结束 -->
+        
+    </div>
+
+
+    <!-- 第三：创建 Vue 实例-->
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

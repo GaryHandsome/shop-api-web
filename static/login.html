@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天狗商城-登录</title>
+
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="../vant/index.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="../vant/vue.min.js"></script>
+    <script src="../vant/vant.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <van-nav-bar
+            title="天狗注册/登录"
+            left-arrow
+            @click-left="onClickLeft">
+        </van-nav-bar>
+
+        <van-form @submit="onSubmit">
+            <van-field
+              v-model="username"
+              name="用户名"
+              label="用户名"
+              placeholder="用户名"
+              left-icon="user-o"
+              :rules="[{ required: true, message: '请填写用户名' }]"
+            ></van-field>
+
+            <van-field
+              v-model="password"
+              type="password"
+              name="密码"
+              label="密码"
+              placeholder="密码"
+              left-icon="closed-eye"
+              :rules="[{ required: true, message: '请填写密码' }]"
+            ></van-field>
+
+            <div style="margin: 16px;">
+              <van-button round block type="info" native-type="submit">提交</van-button>
+            </div>
+          </van-form>
+
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:'#app',
+
+            data:{
+                username:'',
+                password:''
+            },
+
+            methods:{
+                onClickLeft() {
+                    location.href="index.html" ;
+                },
+                onSubmit() {
+                    console.log("登录...");
+                }
+            }
+        }) ;
+    </script>
+</body>
+</html>

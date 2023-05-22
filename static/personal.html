@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天狗商城-个人信息</title>
+
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="../vant/index.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="../vant/vue.min.js"></script>
+    <script src="../vant/vant.min.js"></script>
+
+    <style>
+        .head {
+            padding: .4rem;
+        }
+
+        .info {
+            padding-top: 1rem;
+        }
+
+        .info p {
+            margin-top: .2rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+
+        <van-nav-bar 
+            title="个人中心" 
+            left-text="返回" 
+            @click-left="onClickLeft">
+        </van-nav-bar>
+        
+        <van-row class="head">
+            <van-col span="6">
+              <van-image width="5rem" height="5rem" round src="https://img01.yzcdn.cn/vant/cat.jpeg" />
+            </van-col>
+            <van-col span="18" class="info">
+              <p>你好，张三</p>
+              <p>会员</p>
+            </van-col>
+        </van-row>
+
+
+        <van-cell-group>
+            <van-cell  title="帐号与安全" value="帐户保障可升级" is-link></van-cell>
+            <van-cell title="设置字体大小" is-link></van-cell>
+            <van-cell title="支付设置" is-link></van-cell>
+            <van-cell title="发票抬头管理" value="添加增票资质" is-link></van-cell>
+            <van-cell title="我的档案" value="添加爱车/宠物等档案" is-link></van-cell>
+            <van-cell title="通用" value="消除本地缓存等" is-link></van-cell>
+            <van-cell title="模式切换" is-link></van-cell>
+            <van-cell title="消息通知设置" value="设置短信通知等" is-link></van-cell>
+        </van-cell-group>
+
+        <van-row>
+            <van-col span="24">
+                <van-button round block type="danger" @click="logout">退出登录</van-button>
+            </van-col>
+        </van-row>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:'#app',
+
+            data:{
+               
+            },
+
+            methods:{
+                onClickLeft() {
+                    location.href="index.html" ;
+                },
+                logout() {
+                    console.log("退出登录...");
+                }
+            }
+        }) ;
+    </script>
+</body>
+</html>
