@@ -45,25 +45,28 @@ let app = new Vue({
         onClickRight() {
             location.href = "login.html"
         },
-        // 搜索商品
+        // 条件搜索
         onSearch() {
-            console.log("搜索...",this.productName);
-            // ajax
+            this.findProduct(this.productName) ;
+        },
+        // 查询商品
+        findProduct(name) {
+            $.ajax({
+                // 请求地址：api/product/list_product -- 当前前端工程的服务器/api/product/list_product -- 404
+                // http://127.0.0.1:5501/api/product/list_product - 404
+                url: 'http://localhost:8088/api/product/list_product',
+                type: 'get',
+                data:'productName=' + name ,
+                success: function (res) {
+                    if(res.code==200) {
+                        app.productList = res.data ;
+                    }
+                }
+            });
         }
     },
     mounted(){
-        let that = this ;
-        $.ajax({
-            // 请求地址：api/product/list_product -- 当前前端工程的服务器/api/product/list_product -- 404
-            // http://127.0.0.1:5501/api/product/list_product - 404
-            url: 'http://localhost:8088/api/product/list_product',
-            type: 'get',
-            success: function (res) {
-                console.log(res);
-                if(res.code==200) {
-                    that.productList = res.data ;
-                }
-            }
-        });
+        // 查询所有的商品列表（一般进行分页）
+        this.findProduct('') ;
     }
 });
