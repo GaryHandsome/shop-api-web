@@ -12,6 +12,7 @@
     <!-- 引入 Vue 和 Vant 的 JS 文件 -->
     <script src="vant/vue.min.js"></script>
     <script src="vant/vant.min.js"></script>
+    <script src="js/jquery-1.12.4.js"></script>
 </head>
 <body>
     <div id="app">
@@ -63,7 +64,27 @@
                     location.href="index.html" ;
                 },
                 onSubmit() {
-                    console.log("登录...");
+                    let that = this ;
+                    $.ajax({
+                        method:'post',
+                        data: {
+                            username:that.username ,
+                            password:that.password
+                        },
+                        url:'http://localhost:8088/api/user/login',
+                        success:function( res ) {
+                            
+                            if(res.code!=200) {
+                                that.$toast('错误的帐号或密码');
+                                return ;
+                            }
+
+                            location.href = "index.html" ;
+
+                            // 登录成功，则把 token 字符串，存储到浏览器本地储存中
+                            localStorage.setItem("token",res.data)
+                        }
+                    }) ;
                 }
             }
         }) ;
