@@ -71,7 +71,7 @@
             el:'#app',
 
             data:{
-               
+               token:'Bearer ' + localStorage.getItem("token")
             },
 
             methods:{
@@ -81,6 +81,22 @@
                 logout() {
                     console.log("退出登录...");
                 }
+            },
+
+            mounted(){
+                let that = this ;
+
+                $.ajax({
+                    url: 'http://localhost:8088/api/user/personal',
+                    type: 'get',
+                    beforeSend: function (xhr) {
+                        // 设置请求头，把 token 传递给服务器程序，以便于认证
+                        xhr.setRequestHeader("Authorization", that.token)
+                    },
+                    success: function (res) {
+                        console.log(res);
+                    }
+                });
             }
         }) ;
     </script>

@@ -38,7 +38,9 @@ let app = new Vue({
         // 商品列表信息
         productList:[
             
-        ]
+        ],
+        // 用于标记是否登录
+        isLogin:false
     },
     methods:{
         // 顶部标题右侧登录操作
@@ -63,10 +65,19 @@ let app = new Vue({
                     }
                 }
             });
+        },
+        // 检查用户是否登录
+        checkLogin() {
+            let token = localStorage.getItem("token") ;
+            if(token!=null) {
+                this.isLogin = true ;
+            }
         }
     },
     mounted(){
         // 查询所有的商品列表（一般进行分页）
         this.findProduct('') ;
+
+        this.checkLogin() ;
     }
 });

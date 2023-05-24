@@ -23,8 +23,13 @@
             <!-- 顶部导航开始 -->
             <van-nav-bar
                 title="天狗商城"
+                @click-right="onClickRight" v-if="isLogin">
+            </van-nav-bar>
+
+            <van-nav-bar
+                title="天狗商城"
                 right-text="登录"
-                @click-right="onClickRight">
+                @click-right="onClickRight" v-else>
             </van-nav-bar>
             <!-- 顶部导航结束 -->
 
@@ -107,7 +112,9 @@
             <van-tabbar-item icon="home-o">首页</van-tabbar-item>
             <van-tabbar-item icon="apps-o">分类</van-tabbar-item>
             <van-tabbar-item icon="cart-o" badge="43">购物车</van-tabbar-item>
-            <van-tabbar-item icon="friends-o" dot url="login.html">未登录</van-tabbar-item>
+
+            <van-tabbar-item icon="friends-o" dot url="login.html" v-if="!isLogin">未登录</van-tabbar-item>
+            <van-tabbar-item icon="friends-o" dot url="personal.html" v-else>我的</van-tabbar-item>
         </van-tabbar>
         <!-- 底部菜单结束 -->
         
