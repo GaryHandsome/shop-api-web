@@ -60,9 +60,11 @@
             },
 
             methods:{
+                // 退出登录
                 onClickLeft() {
                     location.href="index.html" ;
                 },
+                // 提交登录
                 onSubmit() {
                     let that = this ;
                     $.ajax({
@@ -71,7 +73,7 @@
                             username:that.username ,
                             password:that.password
                         },
-                        url:'http://localhost:8088/api/user/login',
+                        url:'http://localhost:8088/api/login',
                         success:function( res ) {
                             
                             if(res.code!=200) {

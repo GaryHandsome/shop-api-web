@@ -12,6 +12,7 @@
     <!-- 引入 Vue 和 Vant 的 JS 文件 -->
     <script src="vant/vue.min.js"></script>
     <script src="vant/vant.min.js"></script>
+    <script src="js/jquery-1.12.4.js"></script>
 
     <style>
         .head {
@@ -39,11 +40,11 @@
         
         <van-row class="head">
             <van-col span="6">
-              <van-image width="5rem" height="5rem" round src="https://img01.yzcdn.cn/vant/cat.jpeg" />
+              <van-image width="5rem" height="5rem" round :src="'http://localhost:8080/images/user/'+user.image" />
             </van-col>
             <van-col span="18" class="info">
-              <p>你好，张三</p>
-              <p>会员</p>
+              <p>你好，{{ user.username}}</p>
+              <p>{{ user.level }}</p>
             </van-col>
         </van-row>
 
@@ -71,7 +72,8 @@
             el:'#app',
 
             data:{
-               token:'Bearer ' + localStorage.getItem("token")
+                user:{} ,
+                token:'Bearer ' + localStorage.getItem("token")
             },
 
             methods:{
@@ -79,24 +81,35 @@
                     location.href="index.html" ;
                 },
                 logout() {
-                    console.log("退出登录...");
+                    // 1.从浏览器中，删除本地存储信息
+                    localStorage.removeItem("token")
+                    // 2.跳转到首页
+                    location.href="index.html" ;
+                },
+                // 查看用户个人信息
+                showUserInfo() {
+                    let that = this ;
+                    $.ajax({
+                        url: 'http://localhost:8088/api/user/personal',
+                        type: 'post',
+                        beforeSend: function (xhr) {
+                            // 设置请求头，把 token 传递给服务器程序，以便于认证
+                            xhr.setRequestHeader("Authorization", that.token)
+                        },
+                        success: function (res) {
+
+                            if(res.code!=200) {
+                                location.href = "login.html" ;
+                                return ;
+                            }
+
+                            that.user = res.data ;
+                        }
+                    });
                 }
             },
-
             mounted(){
-                let that = this ;
-
-                $.ajax({
-                    url: 'http://localhost:8088/api/user/personal',
-                    type: 'get',
-                    beforeSend: function (xhr) {
-                        // 设置请求头，把 token 传递给服务器程序，以便于认证
-                        xhr.setRequestHeader("Authorization", that.token)
-                    },
-                    success: function (res) {
-                        console.log(res);
-                    }
-                });
+                this.showUserInfo() ;
             }
         }) ;
     </script>
