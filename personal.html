@@ -99,7 +99,10 @@
                         success: function (res) {
 
                             if(res.code!=200) {
-                                location.href = "login.html" ;
+                                that.$toast(res.msg);
+                                setTimeout(function(){
+                                    location.href = "login.html" ;
+                                },1000)
                                 return ;
                             }
 
